@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Timeline</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&family=Quicksand:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- Add Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            padding-top: 80px; /* Add padding to account for fixed navbar */
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            margin-right: 0;
+        }
+
+        .navbar-brand img {
+            max-height: 40px;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: #3498db;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .timeline-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-content {
+            position: relative;
+            width: calc(50% - 2rem);
+            padding: 1.5rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 1.3%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            left: 52%;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: #3498db;
+            border-radius: 50%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -30px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -30px;
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: 0;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #3498db;
+            text-transform: uppercase;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date {
+            left: calc(100% + 3rem);
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            right: calc(100% + 3rem);
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-family: 'Quicksand', sans-serif;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+
+            .timeline::before {
+                left: 17px;
+            }
+
+            .timeline-container{
+                padding: 1rem 0;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                left: 45px !important;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -37px;
+            }
+
+            .timeline-date {
+                position: relative;
+                top: -5px;
+                left: 0 !important;
+                right: auto !important;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+
+        .logo {
+            max-width: 150px;
+            height: auto;
+            margin-top: 16px;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+        }
+
+        .dark-mode .navbar {
+            background-color: #2c2c2c;
+        }
+
+        .dark-mode .timeline-content {
+            background: #2c2c2c;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-mode h3 {
+            color: #3498db;
+        }
+
+        .dark-mode .btn-outline-primary {
+            color: #3498db;
+            border-color: #3498db;
+        }
+
+        .dark-mode .btn-outline-primary:hover {
+            background-color: #3498db;
+            color: #1a1a1a;
+        }
+
+        .dark-mode-toggle {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .dark-mode .dark-mode-toggle {
+            color: #f0f0f0;
+        }
+
+        .dark-mode-toggle:hover {
+            color: #3498db;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <div class="navbar-brand-container">
+                <a class="navbar-brand" href="#">
+                    <img src="images/black_leopard.png" alt="Travel Blog Logo" class="logo light-mode-logo">
+                    <img src="images/white_leopard.png" alt="Travel Blog Logo" class="logo dark-mode-logo" style="display: none;">
+                </a>
+            </div>
+            <div class="dark-mode-toggle-container">
+                <button class="dark-mode-toggle" id="darkModeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="timeline-container">
+            <div class="timeline">
+                <!-- Timeline items will be dynamically inserted here -->
+            </div>
+            <div id="pagination" class="d-flex justify-content-center mt-4">
+                <!-- Pagination controls will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const timelineData = {
+            "timelineItems": [
+                {
+                    "id": "1",
+                    "placeName": "Valparai",
+                    "date": "10th September 2024",
+                    "imageUrl": "images/IMG20240908183833.jpg",
+                    "description": "Explored the lush tea gardens and misty hills of Valparai. The serene atmosphere and winding roads made for an unforgettable ride.",
+                    "detailedContent": "Detailed description of the Valparai trip."
+                },
+                {
+                    "id": "2",
+                    "placeName": "Ooty",
+                    "date": "15th September 2024",
+                    "imageUrl": "images/IMG20240908183833.jpg",
+                    "description": "Enjoyed the cool climate and beautiful landscapes of Ooty. The Nilgiri Mountain Railway ride was a highlight of the trip.",
+                    "detailedContent": "Detailed description of the Ooty trip."
+                },
+                {
+                    "id": "3",
+                    "placeName": "Kodaikanal",
+                    "date": "20th September 2024",
+                    "imageUrl": "images/IMG20240908183833.jpg",
+                    "description": "Discovered the charm of Kodaikanal with its picturesque lakes and forests. The challenging mountain roads tested my riding skills.",
+                    "detailedContent": "Detailed description of the Kodaikanal trip."
+                },
+                {
+                    "id": "4",
+                    "placeName": "Munnar",
+                    "date": "25th September 2024",
+                    "imageUrl": "images/Oct 20.jpg",
+                    "description": "Immersed in the beauty of Munnar's tea plantations and rolling hills. The early morning rides through the mist were magical.",
+                    "detailedContent": "Detailed description of the Munnar trip."
+                },
+                {
+                    "id": "5",
+                    "placeName": "Rome",
+                    "date": "10th October 2024",
+                    "imageUrl": "images/IMG20240908183833.jpg",
+                    "description": "Explored the lush tea gardens and misty hills of Valparai. The serene atmosphere and winding roads made for an unforgettable ride.",
+                    "detailedContent": "Detailed description of the Rome trip."
+                },
+                {
+                    "id": "6",
+                    "placeName": "Italy",
+                    "date": "15th October 2024",
+                    "imageUrl": "images/IMG20240908183833.jpg",
+                    "description": "Enjoyed the cool climate and beautiful landscapes of Ooty. The Nilgiri Mountain Railway ride was a highlight of the trip.",
+                    "detailedContent": "Detailed description of the Italy trip."
+                },
+                {
+                    "id": "7",
+                    "placeName": "Spain",
+                    "date": "20th October 2024",
+                    "imageUrl": "images/IMG20240908183833.jpg",
+                    "description": "Discovered the charm of Kodaikanal with its picturesque lakes and forests. The challenging mountain roads tested my riding skills.",
+                    "detailedContent": "Detailed description of the Spain trip."
+                },
+                {
+                    "id": "8",
+                    "placeName": "US",
+                    "date": "25th October 2024",
+                    "imageUrl": "images/Oct 20.jpg",
+                    "description": "Immersed in the beauty of Munnar's tea plantations and rolling hills. The early morning rides through the mist were magical.",
+                    "detailedContent": "Detailed description of the US trip."
+                }
+            ]
+        };
+
+        const timelineContainer = document.querySelector('.timeline');
+        const itemsPerPage = 4;
+        let currentPage = 1;
+
+        // Update the sorting function
+        timelineData.timelineItems.sort((a, b) => {
+            const dateA = parseCustomDate(a.date);
+            const dateB = parseCustomDate(b.date);
+            return dateB - dateA;
+        });
+
+        // Add this function to parse the custom date format
+        function parseCustomDate(dateString) {
+            const [day, month, year] = dateString.split(' ');
+            const monthIndex = [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ].indexOf(month);
+            return new Date(year, monthIndex, parseInt(day));
+        }
+
+        function displayTimelineItems(page) {
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const itemsToDisplay = timelineData.timelineItems.slice(startIndex, endIndex);
+
+            timelineContainer.innerHTML = ''; // Clear existing items
+
+            itemsToDisplay.forEach((item, index) => {
+                const timelineItem = document.createElement('div');
+                timelineItem.className = 'timeline-item';
+                timelineItem.innerHTML = `
+                    <div class="timeline-content">
+                        <span class="timeline-date">${item.date}</span>
+                        <h3>${item.placeName}</h3>
+                        <img src="${item.imageUrl}" alt="Bike at ${item.placeName}">
+                        <p>${item.description}</p>
+                        <a href="timeline-detail.html?id=${item.id}" class="btn btn-sm btn-primary">Read More</a>
+                    </div>
+                `;
+                timelineContainer.appendChild(timelineItem);
+
+                // Trigger reflow to ensure the animation works
+                timelineItem.offsetHeight;
+
+                // Add the 'show' class with a slight delay for each item
+                setTimeout(() => {
+                    timelineItem.classList.add('show');
+                }, index * 50);
+            });
+
+            updatePaginationControls();
+        }
+
+        function updatePaginationControls() {
+            const totalPages = Math.ceil(timelineData.timelineItems.length / itemsPerPage);
+            
+            const paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = '';
+
+            if (totalPages > 1) {
+                // Add "Previous" button
+                const prevButton = createPageButton('Prev', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        displayTimelineItems(currentPage);
+                        scrollToTop();
+                    }
+                });
+                paginationContainer.appendChild(prevButton);
+
+                // Add numbered page buttons
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageButton = createPageButton(i, () => {
+                        currentPage = i;
+                        displayTimelineItems(currentPage);
+                        scrollToTop();
+                    });
+                    if (i === currentPage) {
+                        pageButton.classList.add('active');
+                    }
+                    paginationContainer.appendChild(pageButton);
+                }
+
+                // Add "Next" button
+                const nextButton = createPageButton('Next', () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        displayTimelineItems(currentPage);
+                        scrollToTop();
+                    }
+                });
+                paginationContainer.appendChild(nextButton);
+            }
+        }
+
+        function createPageButton(text, onClick) {
+            const button = document.createElement('button');
+            button.textContent = text;
+            button.classList.add('btn', 'btn-sm', 'btn-outline-primary', 'm-1');
+            button.addEventListener('click', onClick);
+            return button;
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const lightModeLogo = document.querySelector('.light-mode-logo');
+        const darkModeLogo = document.querySelector('.dark-mode-logo');
+        const darkModeIcon = darkModeToggle.querySelector('i');
+
+        function setDarkMode(isDarkMode) {
+            body.classList.toggle('dark-mode', isDarkMode);
+            lightModeLogo.style.display = isDarkMode ? 'none' : 'inline';
+            darkModeLogo.style.display = isDarkMode ? 'inline' : 'none';
+            
+            if (isDarkMode) {
+                darkModeIcon.classList.remove('fa-moon');
+                darkModeIcon.classList.add('fa-sun');
+            } else {
+                darkModeIcon.classList.remove('fa-sun');
+                darkModeIcon.classList.add('fa-moon');
+            }
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            const isDarkMode = !body.classList.contains('dark-mode');
+            setDarkMode(isDarkMode);
+            localStorage.setItem('darkMode', isDarkMode);
+        });
+
+        // Check for user's preference on page load
+        const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+        setDarkMode(savedDarkMode);
+
+        // Initial display
+        displayTimelineItems(currentPage);
+    </script>
+</body>
+</html>
