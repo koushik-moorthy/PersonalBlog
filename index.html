@@ -22,6 +22,11 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
+        .mb-5{
+            margin-bottom: 22rem !important;
+            margin-top: 13rem !important;
+        }
+
         .navbar .container {
             display: flex;
             justify-content: center;
@@ -34,6 +39,49 @@
 
         .navbar-brand img {
             max-height: 40px;
+        }
+
+        .intro-title, .intro-description {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .intro-title.show, .intro-description.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(52, 152, 219, 0.2);
+        }
+
+        .dark-mode .btn-primary {
+            background-color: #3498db;
+            color: #ffffff;
+        }
+
+        .dark-mode .btn-primary:hover {
+            background-color: #2980b9;
         }
 
         .timeline-container {
@@ -147,6 +195,11 @@
 
         @media (max-width: 768px) {
 
+            .mb-5{
+                margin-bottom: 12rem !important;
+                margin-top: 7rem !important;
+            }
+
             .timeline::before {
                 left: 17px;
             }
@@ -233,6 +286,33 @@
         .dark-mode-toggle:hover {
             color: #3498db;
         }
+
+        .intro-section {
+            padding: 60px 0;
+        }
+
+        .intro-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .intro-description {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .dark-mode .intro-title {
+            color: #3498db;
+        }
+
+        .dark-mode .intro-description {
+            color: #f0f0f0;
+        }
         
     </style>
 </head>
@@ -254,7 +334,16 @@
     </nav>
 
     <div class="container">
-        <div class="timeline-container">
+        <div class="intro-section text-center mb-5">
+            <h1 class="intro-title">My Travel Adventures</h1>
+            <p class="intro-description">
+                Join me on a journey through time and space as I explore the world on two wheels.
+                From misty mountains to bustling cities, every ride is an adventure waiting to be shared.
+            </p>
+            <button id="goToTimeline" class="btn btn-primary btn-lg">Go to Timeline</button>
+        </div>
+
+        <div class="timeline-container" id="timelineSection">
             <div class="timeline">
                 <!-- Timeline items will be dynamically inserted here -->
             </div>
@@ -265,85 +354,35 @@
     </div>
 
     <script>
-        const timelineData = {
-            "timelineItems": [
-                {
-                    "id": "1",
-                    "placeName": "Valparai",
-                    "date": "10th September 2024",
-                    "imageUrl": "images/IMG20240908183833.jpg",
-                    "description": "Explored the lush tea gardens and misty hills of Valparai. The serene atmosphere and winding roads made for an unforgettable ride.",
-                    "detailedContent": "Detailed description of the Valparai trip."
-                },
-                {
-                    "id": "2",
-                    "placeName": "Ooty",
-                    "date": "15th September 2024",
-                    "imageUrl": "images/IMG20240908183833.jpg",
-                    "description": "Enjoyed the cool climate and beautiful landscapes of Ooty. The Nilgiri Mountain Railway ride was a highlight of the trip.",
-                    "detailedContent": "Detailed description of the Ooty trip."
-                },
-                {
-                    "id": "3",
-                    "placeName": "Kodaikanal",
-                    "date": "20th September 2024",
-                    "imageUrl": "images/IMG20240908183833.jpg",
-                    "description": "Discovered the charm of Kodaikanal with its picturesque lakes and forests. The challenging mountain roads tested my riding skills.",
-                    "detailedContent": "Detailed description of the Kodaikanal trip."
-                },
-                {
-                    "id": "4",
-                    "placeName": "Munnar",
-                    "date": "25th September 2024",
-                    "imageUrl": "images/Oct 20.jpg",
-                    "description": "Immersed in the beauty of Munnar's tea plantations and rolling hills. The early morning rides through the mist were magical.",
-                    "detailedContent": "Detailed description of the Munnar trip."
-                },
-                {
-                    "id": "5",
-                    "placeName": "Rome",
-                    "date": "10th October 2024",
-                    "imageUrl": "images/IMG20240908183833.jpg",
-                    "description": "Explored the lush tea gardens and misty hills of Valparai. The serene atmosphere and winding roads made for an unforgettable ride.",
-                    "detailedContent": "Detailed description of the Rome trip."
-                },
-                {
-                    "id": "6",
-                    "placeName": "Italy",
-                    "date": "15th October 2024",
-                    "imageUrl": "images/IMG20240908183833.jpg",
-                    "description": "Enjoyed the cool climate and beautiful landscapes of Ooty. The Nilgiri Mountain Railway ride was a highlight of the trip.",
-                    "detailedContent": "Detailed description of the Italy trip."
-                },
-                {
-                    "id": "7",
-                    "placeName": "Spain",
-                    "date": "20th October 2024",
-                    "imageUrl": "images/IMG20240908183833.jpg",
-                    "description": "Discovered the charm of Kodaikanal with its picturesque lakes and forests. The challenging mountain roads tested my riding skills.",
-                    "detailedContent": "Detailed description of the Spain trip."
-                },
-                {
-                    "id": "8",
-                    "placeName": "US",
-                    "date": "25th October 2024",
-                    "imageUrl": "images/Oct 20.jpg",
-                    "description": "Immersed in the beauty of Munnar's tea plantations and rolling hills. The early morning rides through the mist were magical.",
-                    "detailedContent": "Detailed description of the US trip."
-                }
-            ]
-        };
+        let timelineData = { timelineItems: [] };
 
         const timelineContainer = document.querySelector('.timeline');
         const itemsPerPage = 4;
         let currentPage = 1;
 
-        // Update the sorting function
-        timelineData.timelineItems.sort((a, b) => {
-            const dateA = parseCustomDate(a.date);
-            const dateB = parseCustomDate(b.date);
-            return dateB - dateA;
-        });
+        async function fetchTimelineData() {
+            try {
+                const response = await fetch('timeline-data.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                timelineData = await response.json();
+                
+                // Sort the timeline items
+                timelineData.timelineItems.sort((a, b) => {
+                    const dateA = parseCustomDate(a.date);
+                    const dateB = parseCustomDate(b.date);
+                    return dateB - dateA;
+                });
+
+                // Display the first page of items
+                displayTimelineItems(currentPage);
+            } catch (error) {
+                console.error("Could not fetch timeline data:", error);
+                console.log("Current path:", window.location.href);
+                console.log("Attempted to fetch:", new URL('timeline-data.json', window.location.href).href);
+            }
+        }
 
         // Add this function to parse the custom date format
         function parseCustomDate(dateString) {
@@ -477,7 +516,35 @@
         setDarkMode(savedDarkMode);
 
         // Initial display
-        displayTimelineItems(currentPage);
+        fetchTimelineData();
+
+        // Add this at the end of the script
+        document.getElementById('goToTimeline').addEventListener('click', function() {
+        const timelineSection = document.getElementById('timelineSection');
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        const scrollPosition = timelineSection.offsetTop - navbarHeight - 20; // Added extra 20px for spacing
+        window.scrollTo({
+            top: scrollPosition,
+            behavior: 'smooth'
+            });
+        });
+
+        function animateIntroSection() {
+            const introTitle = document.querySelector('.intro-title');
+            const introDescription = document.querySelector('.intro-description');
+            
+            setTimeout(() => {
+                introTitle.classList.add('show');
+            }, 300);
+
+            setTimeout(() => {
+                introDescription.classList.add('show');
+            }, 600);
+        }
+
+        // Call the function when the page loads
+        window.addEventListener('load', animateIntroSection);
+
     </script>
 </body>
 </html>

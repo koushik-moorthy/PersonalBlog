@@ -6,16 +6,19 @@
     <title>Timeline Item Detail</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #f0f0f0;
-            padding-top: 120px; /* Increase this value to add more space */
+            font-family: 'Lato', sans-serif;
+            background-color: #f5f5f5;
+            padding-top: 120px;
             padding-bottom: 20px;
+            line-height: 1.6;
         }
-        .container {
-            max-width: 100%;
-            padding-left: 15px;
-            padding-right: 15px;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            color: #2c3e50;
         }
         .navbar {
             background-color: #ffffff;
@@ -46,36 +49,53 @@
         .content-wrapper {
             background-color: #ffffff;
             border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .detail-image {
             width: 100%;
             height: auto;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
         .date {
             font-size: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            color: #7f8c8d;
+            font-style: italic;
         }
         .description {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #34495e;
         }
         .detailed-content {
-            font-size: 1rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
         }
         .back-button {
             margin-top: 2rem;
             margin-bottom: 1rem;
+        }
+        .back-button .btn {
+            font-weight: 500;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            background-color: #3498db;
+            border-color: #3498db;
+        }
+        .back-button .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background-color: #2980b9;
+            border-color: #2980b9;
         }
         @media (min-width: 768px) {
             .logo-container {
@@ -98,30 +118,30 @@
             background-color: #1a1a1a;
             color: #f0f0f0;
         }
-
         .dark-mode .navbar {
             background-color: #2c2c2c;
         }
-
         .dark-mode .content-wrapper {
             background-color: #2c2c2c;
             box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
         }
-
-        .dark-mode h1 {
-            color: #3498db;
+        .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+            color: #ecf0f1;
         }
-
+        .dark-mode .description, .dark-mode .detailed-content {
+            color: #bdc3c7;
+        }
+        .dark-mode .date {
+            color: #95a5a6;
+        }
         .dark-mode .btn-primary {
             background-color: #3498db;
             border-color: #3498db;
         }
-
         .dark-mode .btn-primary:hover {
             background-color: #2980b9;
             border-color: #2980b9;
         }
-
         .dark-mode-toggle {
             cursor: pointer;
             padding: 5px 10px;
@@ -132,27 +152,21 @@
             color: #333;
             transition: color 0.3s;
         }
-
         .dark-mode .dark-mode-toggle {
             color: #f0f0f0;
         }
-
         .dark-mode-toggle:hover {
             color: #3498db;
         }
-
         .navbar-brand .logo-light {
             display: block;
         }
-
         .navbar-brand .logo-dark {
             display: none;
         }
-
         .dark-mode .navbar-brand .logo-light {
             display: none;
         }
-
         .dark-mode .navbar-brand .logo-dark {
             display: block;
         }
@@ -181,50 +195,28 @@
                 <!-- Content will be dynamically inserted here -->
             </div>
             <div class="back-button">
-                <a href="timeline.html" class="btn btn-primary">Back to Timeline</a>
+                <a href="index.html" class="btn btn-primary">Back to Timeline</a>
             </div>
         </div>
     </div>
 
     <script>
-        const timelineData = {
-            "timelineItems": [
-                {
-                    "id": "1",
-                    "placeName": "Valparai",
-                    "date": "10th September 2024",
-                    "imageUrl": "images/IMG20240908183833.jpg",
-                    "description": "Explored the lush tea gardens and misty hills of Valparai. The serene atmosphere and winding roads made for an unforgettable ride.",
-                    "detailedContent": "Detailed description of the Valparai trip."
-                },
-                {
-                    "id": "2",
-                    "placeName": "Ooty",
-                    "date": "15th September 2024",
-                    "imageUrl": "images/IMG20240908183833.jpg",
-                    "description": "Enjoyed the cool climate and beautiful landscapes of Ooty. The Nilgiri Mountain Railway ride was a highlight of the trip.",
-                    "detailedContent": "Detailed description of the Ooty trip."
-                },
-                {
-                    "id": "3",
-                    "placeName": "Kodaikanal",
-                    "date": "20th September 2024",
-                    "imageUrl": "images/IMG20240908183833.jpg",
-                    "description": "Discovered the charm of Kodaikanal with its picturesque lakes and forests. The challenging mountain roads tested my riding skills.",
-                    "detailedContent": "Detailed description of the Kodaikanal trip."
-                },
-                {
-                    "id": "4",
-                    "placeName": "Munnar",
-                    "date": "25th September 2024",
-                    "imageUrl": "images/Oct 20.jpg",
-                    "description": "Immersed in the beauty of Munnar's tea plantations and rolling hills. The early morning rides through the mist were magical.",
-                    "detailedContent": "Detailed description of the Munnar trip."
-                }
-            ]
-        };
+        let timelineData = { timelineItems: [] };
 
-        document.addEventListener('DOMContentLoaded', () => {
+        async function fetchTimelineData() {
+            try {
+                const response = await fetch('timeline-data.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                timelineData = await response.json();
+                displayDetailContent();
+            } catch (error) {
+                console.error("Could not fetch timeline data:", error);
+            }
+        }
+
+        function displayDetailContent() {
             const detailContent = document.getElementById('detail-content');
             const urlParams = new URLSearchParams(window.location.search);
             const itemId = urlParams.get('id');
@@ -241,7 +233,9 @@
             } else {
                 detailContent.innerHTML = '<p>Item not found.</p>';
             }
-        });
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchTimelineData);
 
         // Dark mode toggle functionality
         const darkModeToggle = document.getElementById('darkModeToggle');
