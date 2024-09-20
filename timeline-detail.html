@@ -23,6 +23,7 @@
         .navbar {
             background-color: #ffffff;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
         }
         .navbar .container {
             display: flex;
@@ -51,6 +52,11 @@
             border-radius: 8px;
             padding: 30px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: opacity 0.2s ease-in;
+        }
+        .fade-in {
+            opacity: 1;
         }
         .detail-image {
             width: 100%;
@@ -123,7 +129,7 @@
         }
         .dark-mode .content-wrapper {
             background-color: #2c2c2c;
-            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
             color: #ecf0f1;
@@ -170,13 +176,215 @@
         .dark-mode .navbar-brand .logo-dark {
             display: block;
         }
+
+        .image-gallery {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        .gallery-item {
+            padding: 10px;
+        }
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+        .dark-mode .gallery-image {
+            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0);
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        .lightbox.active {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .lightbox-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        .lightbox-image {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        .lightbox.active .lightbox-image {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.active .lightbox-close {
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        .fade-out {
+            animation: fadeOut 0.3s ease-out forwards;
+        }
+
+        .gallery-item {
+            transition: all 0.5s ease-in-out;
+        }
+
+        /* Add these new styles for the fade-out animation */
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        .fade-out {
+            animation: fadeOut 0.2s ease-out forwards;
+        }
+
+        /* Style for the overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .dark-mode .overlay {
+            background-color: #1a1a1a;
+        }
+
+        /* Add these new styles for the image loader */
+        .image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #f0f0f0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .dark-mode .image-container {
+            background-color: #2c2c2c;
+        }
+
+        .image-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: #3498db;
+        }
+
+        .detail-image, .gallery-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .detail-image.loaded, .gallery-image.loaded {
+            opacity: 1;
+        }
+
+        .gallery-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .gallery-item .image-container {
+            padding-top: 100%; /* 1:1 Aspect Ratio for gallery images */
+        }
+
+        /* Updated styles for the main image hover effect without magnifier */
+        .image-container {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-container:hover::after {
+            opacity: 1;
+        }
+
+        /* Ensure the main image doesn't block the hover effect */
+        .detail-image {
+            pointer-events: none;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover .detail-image {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <div class="navbar-brand-container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.html">
                     <img src="images/black_leopard.png" alt="Travel Blog Logo" class="logo light-mode-logo">
                     <img src="images/white_leopard.png" alt="Travel Blog Logo" class="logo dark-mode-logo" style="display: none;">
                 </a>
@@ -195,29 +403,50 @@
                 <!-- Content will be dynamically inserted here -->
             </div>
             <div class="back-button">
-                <a href="index.html" class="btn btn-primary">Back to Timeline</a>
+                <a href="javascript:void(0);" class="btn btn-primary" onclick="goBackToTimeline()">Back to Timeline</a>
             </div>
         </div>
     </div>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+        </div>
+    </div>
+
+    <!-- Add this div for the overlay -->
+    <div id="overlay" class="overlay"></div>
 
     <script>
         let timelineData = { timelineItems: [] };
 
         async function fetchTimelineData() {
             try {
-                const response = await fetch('timeline-data.json');
+                const response = await fetch('updated_timeline-data.json?_=' + new Date().getTime());
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                timelineData = await response.json();
-                displayDetailContent();
+                const data = await response.json();
+                
+                // Check if the data has actually changed
+                if (JSON.stringify(data) !== JSON.stringify(timelineData)) {
+                    timelineData = data;
+                    displayDetailContent();
+                } else {
+                    console.log("Data hasn't changed since last fetch");
+                }
             } catch (error) {
                 console.error("Could not fetch timeline data:", error);
+                console.log("Current path:", window.location.href);
+                console.log("Attempted to fetch:", new URL('updated_timeline-data.json', window.location.href).href);
             }
         }
 
         function displayDetailContent() {
             const detailContent = document.getElementById('detail-content');
+            const contentWrapper = document.querySelector('.content-wrapper');
+            const overlay = document.getElementById('overlay');
             const urlParams = new URLSearchParams(window.location.search);
             const itemId = urlParams.get('id');
 
@@ -226,16 +455,213 @@
                 detailContent.innerHTML = `
                     <h1>${item.placeName}</h1>
                     <p class="text-muted date">${item.date}</p>
-                    <img src="${item.imageUrl}" alt="${item.placeName}" class="detail-image">
+                    <div class="image-container">
+                        <div class="image-loader">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                        <img src="${item.imageUrl}" alt="${item.placeName}" class="detail-image">
+                    </div>
                     <p class="description">${item.description}</p>
                     <div class="detailed-content">${item.detailedContent || 'No detailed content available.'}</div>
+                    <h3 class="mt-4 mb-3">A few pictures from the trip</h3>
+                    <div class="image-gallery">
+                        <div class="row" id="imageGallery"></div>
+                    </div>
+                    <div class="text-center mt-3" id="galleryControlContainer">
+                        <button class="btn btn-primary" id="galleryControl">View all photos</button>
+                    </div>
                 `;
+
+                // Load the main image
+                const mainImage = detailContent.querySelector('.detail-image');
+                if (mainImage.complete) {
+                    mainImage.classList.add('loaded');
+                } else {
+                    mainImage.onload = () => mainImage.classList.add('loaded');
+                }
+
+                // Update the click event to the image container instead of the image
+                const mainImageContainer = detailContent.querySelector('.image-container');
+                mainImageContainer.onclick = function() {
+                    openLightbox(item.imageUrl, item.placeName, this.querySelector('.detail-image'));
+                };
+
+                // Add fade-in effect and hide overlay
+                requestAnimationFrame(() => {
+                    contentWrapper.classList.add('fade-in');
+                    overlay.style.opacity = '0';
+                });
+
+                // Add image gallery
+                const imageGallery = document.getElementById('imageGallery');
+                const galleryControlContainer = document.getElementById('galleryControlContainer');
+                const galleryControl = document.getElementById('galleryControl');
+                const galleryHeading = document.querySelector('h3.mt-4.mb-3');
+                
+                if (item.galleryImages && item.galleryImages.length > 0) {
+                    const createImageElement = (image, index) => {
+                        const col = document.createElement('div');
+                        col.className = 'col-md-4 col-sm-6 gallery-item fade-in';
+                        col.innerHTML = `
+                            <div class="image-container">
+                                <div class="image-loader">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                                <img src="${image.url}" alt="${image.caption || `Gallery image ${index + 1}`}" class="gallery-image">
+                            </div>
+                        `;
+                        const img = col.querySelector('img');
+                        if (img.complete) {
+                            img.classList.add('loaded');
+                        } else {
+                            img.onload = () => img.classList.add('loaded');
+                        }
+                        img.onclick = function() {
+                            openLightbox(image.url, image.caption || '', this);
+                        };
+                        return col;
+                    };
+
+                    const displayImages = (images, animate = false) => {
+                        if (animate) {
+                            const existingItems = imageGallery.querySelectorAll('.gallery-item');
+                            existingItems.forEach(item => {
+                                item.classList.remove('fade-in');
+                                item.classList.add('fade-out');
+                            });
+                            setTimeout(() => {
+                                imageGallery.innerHTML = '';
+                                images.forEach((image, index) => {
+                                    imageGallery.appendChild(createImageElement(image, index));
+                                });
+                            }, 500); // Match this delay with the CSS animation duration
+                        } else {
+                            imageGallery.innerHTML = '';
+                            images.forEach((image, index) => {
+                                imageGallery.appendChild(createImageElement(image, index));
+                            });
+                        }
+                    };
+
+                    displayImages(item.galleryImages.slice(0, 6));
+
+                    if (item.galleryImages.length > 6) {
+                        galleryControlContainer.style.display = 'block';
+                        let expanded = false;
+
+                        galleryControl.addEventListener('click', function() {
+                            if (expanded) {
+                                displayImages(item.galleryImages.slice(0, 6), true);
+                                galleryControl.textContent = 'View all photos';
+                                galleryHeading.textContent = 'A few pictures from the trip';
+                            } else {
+                                displayImages(item.galleryImages, true);
+                                galleryControl.textContent = 'View less';
+                                galleryHeading.textContent = 'All pictures from the trip';
+                            }
+                            expanded = !expanded;
+                        });
+                    } else {
+                        galleryControlContainer.style.display = 'none';
+                    }
+                } else {
+                    imageGallery.innerHTML = '<p>No additional images available for this trip.</p>';
+                    galleryControlContainer.style.display = 'none';
+                }
             } else {
                 detailContent.innerHTML = '<p>Item not found.</p>';
             }
         }
 
-        document.addEventListener('DOMContentLoaded', fetchTimelineData);
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        let currentGalleryImage = null;
+
+        function openLightbox(imageUrl, caption, clickedImage) {
+            currentGalleryImage = clickedImage;
+            lightboxImage.src = imageUrl;
+            lightboxImage.alt = caption;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                lightbox.classList.add('active');
+                adjustImageSize();
+            }, 10);
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightboxImage.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+            
+            if (currentGalleryImage) {
+                const rect = currentGalleryImage.getBoundingClientRect();
+                const scaleX = currentGalleryImage.width / lightboxImage.offsetWidth;
+                const scaleY = currentGalleryImage.height / lightboxImage.offsetHeight;
+                const translateX = rect.left + (currentGalleryImage.width / 2) - (lightboxImage.offsetWidth / 2);
+                const translateY = rect.top + (currentGalleryImage.height / 2) - (lightboxImage.offsetHeight / 2);
+                
+                lightboxImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scaleX}, ${scaleY})`;
+                lightboxImage.style.opacity = '0';
+            }
+
+            setTimeout(() => {
+                document.body.style.overflow = '';
+                lightbox.style.display = 'none';
+                lightboxImage.style.transform = '';
+                lightboxImage.style.opacity = '';
+            }, 300);
+        }
+
+        function adjustImageSize() {
+            const img = lightboxImage;
+            const maxWidth = window.innerWidth * 0.9;
+            const maxHeight = window.innerHeight * 0.9;
+            
+            if (img.naturalWidth > maxWidth || img.naturalHeight > maxHeight) {
+                const ratio = Math.min(maxWidth / img.naturalWidth, maxHeight / img.naturalHeight);
+                img.style.width = `${img.naturalWidth * ratio}px`;
+                img.style.height = `${img.naturalHeight * ratio}px`;
+            } else {
+                img.style.width = 'auto';
+                img.style.height = 'auto';
+            }
+        }
+
+        // Adjust image size when window is resized
+        window.addEventListener('resize', () => {
+            if (lightbox.classList.contains('active')) {
+                adjustImageSize();
+            }
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const itemId = urlParams.get('id');
+            if (itemId) {
+                fetchTimelineData().then(() => {
+                    displayDetailContent(itemId);
+                });
+            } else {
+                console.error('No item ID provided');
+            }
+        });
 
         // Dark mode toggle functionality
         const darkModeToggle = document.getElementById('darkModeToggle');
@@ -267,6 +693,74 @@
         // Check for user's preference on page load
         const savedDarkMode = localStorage.getItem('darkMode') === 'true';
         setDarkMode(savedDarkMode);
+
+        function goBackToTimeline() {
+            const contentWrapper = document.querySelector('.content-wrapper');
+            const overlay = document.getElementById('overlay');
+
+            // Start fade-out transition
+            contentWrapper.classList.add('fade-out');
+            overlay.style.opacity = '1';
+
+            // Use setTimeout to allow the fade-out animation to complete
+            setTimeout(() => {
+                // Navigate back to the timeline page
+                window.location.href = 'index.html';
+            }, 300); // Adjust this delay to match your fade-out animation duration
+        }
+
+        // Add this function to initialize the detail page
+        function initializeDetailPage() {
+            fetchTimelineData().then(() => {
+                displayDetailContent();
+            });
+
+            // Re-attach event listeners
+            document.getElementById('darkModeToggle').addEventListener('click', () => {
+                const isDarkMode = !body.classList.contains('dark-mode');
+                setDarkMode(isDarkMode);
+                localStorage.setItem('darkMode', isDarkMode);
+            });
+
+            // Add other event listeners
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const lightbox = document.getElementById('lightbox');
+
+            darkModeToggle.addEventListener('click', () => {
+                const isDarkMode = !body.classList.contains('dark-mode');
+                setDarkMode(isDarkMode);
+                localStorage.setItem('darkMode', isDarkMode);
+            });
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+                    closeLightbox();
+                }
+            });
+
+            // Close lightbox with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+
+            // Adjust image size when window is resized
+            window.addEventListener('resize', () => {
+                if (lightbox.classList.contains('active')) {
+                    adjustImageSize();
+                }
+            });
+
+            // Check for user's preference on page load
+            const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+            setDarkMode(savedDarkMode);
+        }
+
+        // Call initializeDetailPage when the script loads
+        initializeDetailPage();
     </script>
 </body>
 </html>

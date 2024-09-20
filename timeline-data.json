@@ -2,67 +2,587 @@
     "timelineItems": [
         {
             "id": "1",
-            "placeName": "Valparai",
-            "date": "10th September 2024",
-            "imageUrl": "images/IMG20240908183833.jpg",
-            "description": "Explored the lush tea gardens and misty hills of Valparai. The serene atmosphere and winding roads made for an unforgettable ride.",
-            "detailedContent": "Valparai, nestled in the Anamalai Hills, offered a perfect start to my journey. The cool climate and endless tea estates created a mesmerizing landscape. I navigated through hairpin bends, often enveloped in mist, which added an element of adventure to the ride. The Sholayar Dam and the nearby waterfalls were breathtaking sights. Wildlife enthusiasts would love this place for its occasional elephant sightings!"
+            "placeName": "Tiruvannamalai",
+            "date": "25 May 2024",
+            "imageUrl": "images/Tiruvannamalai/IMG20240525200457.jpg",
+            "description": "Tiruvannamalai is a town in the Indian state of Tamil Nadu. It is famous for its scenic beauty, and the Arunachala Hill, which is a sacred site for Hindus. The town is also known for its pleasant climate and is a popular destination for tourists.",
+            "detailedContent": "Tiruvannamalai is a town in the Indian state of Tamil Nadu. It is famous for its scenic beauty, and the Arunachala Hill, which is a sacred site for Hindus. The town is also known for its pleasant climate and is a popular destination for tourists.",
+            "galleryImages": [
+                {
+                    "url": "images/Tiruvannamalai/IMG20240525200457.jpg",
+                    "caption": "Tiruvannamalai"
+                }
+            ]
         },
         {
             "id": "2",
-            "placeName": "Ooty",
-            "date": "15th September 2024",
-            "imageUrl": "images/IMG20240908183833.jpg",
-            "description": "Enjoyed the cool climate and beautiful landscapes of Ooty. The Nilgiri Mountain Railway ride was a highlight of the trip.",
-            "detailedContent": "Ooty, the 'Queen of Hill Stations', lived up to its reputation. The ride up the Nilgiri mountains was exhilarating, with each turn revealing stunning vistas. I took a nostalgic journey on the Nilgiri Mountain Railway, a UNESCO World Heritage site. The Botanical Gardens and Ooty Lake were perfect spots to relax after long rides. The local Nilgiri tea and homemade chocolates were delightful treats!"
+            "placeName": "Pondicherry",
+            "date": "23 June 2024",
+            "imageUrl": "images/Pondicherry/IMG20240623162617.jpg",
+            "description": "Pondicherry is a town in the Indian state of Tamil Nadu. It is famous for its scenic beauty, and the Arunachala Hill, which is a sacred site for Hindus. The town is also known for its pleasant climate and is a popular destination for tourists.",
+            "detailedContent": "Pondicherry is a town in the Indian state of Tamil Nadu. It is famous for its scenic beauty, and the Arunachala Hill, which is a sacred site for Hindus. The town is also known for its pleasant climate and is a popular destination for tourists.",
+            "galleryImages": [
+                {
+                    "url": "images/Pondicherry/IMG20240623162617.jpg",
+                    "caption": "Pondicherry"
+                },
+                {
+                    "url": "images/Pondicherry/IMG20240622071008.jpg",
+                    "caption": "Pondicherry"
+                },
+                {
+                    "url": "images/Pondicherry/IMG20240622071054.jpg",
+                    "caption": "Pondicherry"
+                },
+                {
+                    "url": "images/Pondicherry/IMG20240622071305.jpg",
+                    "caption": "Pondicherry"
+                },
+                {
+                    "url": "images/Pondicherry/IMG20240622071323.jpg",
+                    "caption": "Pondicherry"
+                },
+                {
+                    "url": "images/Pondicherry/IMG20240622071434.jpg",
+                    "caption": "Pondicherry"
+                },
+                {
+                    "url": "images/Pondicherry/IMG20240622071732.jpg",
+                    "caption": "Pondicherry"
+                }
+            ]
         },
         {
             "id": "3",
-            "placeName": "Kodaikanal",
-            "date": "20th September 2024",
-            "imageUrl": "images/IMG20240908183833.jpg",
-            "description": "Discovered the charm of Kodaikanal with its picturesque lakes and forests. The challenging mountain roads tested my riding skills.",
-            "detailedContent": "Kodaikanal, or 'Kodai' as locals call it, was a biker's paradise. The ride to Kodai was challenging but rewarding, with steep climbs and sharp turns. The mist-covered Kodai Lake was a sight to behold. I hiked to the Dolphin's Nose viewpoint for panoramic views of the valley. The Pine forests and the serene Berijam Lake added to the town's allure. The homemade artisanal cheeses were a delightful discovery!"
+            "placeName": "Pillayarpatti",
+            "date": "06 July 2024",
+            "imageUrl": "images/Pillayarpatti/IMG20240706161901.jpg",
+            "description": "Pillayarpatti temple is a Hindu temple located in the village of Pillayarpatti, in the Indian state of Tamil Nadu. It is dedicated to the goddess Pillayar, who is worshipped as the preserver of the universe. The temple is known for its unique architecture and intricate sculptures. The temple is also known for its pleasant climate and is a popular destination for tourists.",
+            "detailedContent": "Pillayarpatti temple is a Hindu temple located in the village of Pillayarpatti, in the Indian state of Tamil Nadu. It is dedicated to the goddess Pillayar, who is worshipped as the preserver of the universe. The temple is known for its unique architecture and intricate sculptures. The temple is also known for its pleasant climate and is a popular destination for tourists.",
+            "galleryImages": [
+                {
+                    "url": "images/Pillayarpatti/IMG20240706161901.jpg",
+                    "caption": "Pillayarpatti"
+                },
+                {
+                    "url": "images/Pillayarpatti/IMG20240706161805.jpg",
+                    "caption": "Pillayarpatti"
+                },
+                {
+                    "url": "images/Pillayarpatti/IMG20240706161829.jpg",
+                    "caption": "Pillayarpatti"
+                },
+                {
+                    "url": "images/Pillayarpatti/IMG20240706161839.jpg",
+                    "caption": "Pillayarpatti"
+                }
+            ]
         },
         {
             "id": "4",
-            "placeName": "Munnar",
-            "date": "25th September 2024",
-            "imageUrl": "images/Oct 20.jpg",
-            "description": "Immersed in the beauty of Munnar's tea plantations and rolling hills. The early morning rides through the mist were magical.",
-            "detailedContent": "Munnar was a green paradise that took my breath away. The endless expanse of tea plantations created a carpet of green as far as the eye could see. Early morning rides through the mist-covered hills were surreal. I visited the Tea Museum to learn about the region's tea-making heritage. The Eravikulam National Park, home to the endangered Nilgiri Tahr, was a highlight. The spice gardens added an aromatic touch to the journey."
+            "placeName": "Athirampally",
+            "date": "21 July 2024",
+            "imageUrl": "images/Athirampally/IMG20240721103915.jpg",
+            "description": "Athirampally is a village in the Indian state of Kerala. It is famous for its scenic beauty, and the Athirappilly Falls, which is a popular destination for tourists. The village is also known for its pleasant climate and is a popular destination for tourists.",
+            "detailedContent": "Athirampally is a village in the Indian state of Kerala. It is famous for its scenic beauty, and the Athirappilly Falls, which is a popular destination for tourists. The village is also known for its pleasant climate and is a popular destination for tourists.",
+            "galleryImages": [
+                {
+                    "url": "images/Athirampally/IMG20240721103915.jpg",
+                    "caption": "Athirampally"
+                },
+                {
+                    "url": "images/Athirampally/IMG20240721103921.jpg",
+                    "caption": "Athirampally"
+                },
+                {
+                    "url": "images/Athirampally/IMG20240721103941.jpg",
+                    "caption": "Athirampally"
+                },
+                {
+                    "url": "images/Athirampally/IMG20240719074320.jpg",
+                    "caption": "Athirampally"
+                },
+                {
+                    "url": "images/Athirampally/IMG20240719112833.jpg",
+                    "caption": "Athirampally"
+                },
+                {
+                    "url": "images/Athirampally/IMG20240719181601.jpg",
+                    "caption": "Athirampally"
+                },
+                {
+                    "url": "images/Athirampally/IMG20240719181615.jpg",
+                    "caption": "Athirampally"
+                },
+                {
+                    "url": "images/Athirampally/IMG20240719181636.jpg",
+                    "caption": "Athirampally"
+                },
+                {
+                    "url": "images/Athirampally/IMG20240719181651.jpg",
+                    "caption": "Athirampally"
+                },
+                {
+                    "url": "images/Athirampally/IMG20240720101712.jpg",
+                    "caption": "Athirampally"
+                }
+            ]
         },
         {
             "id": "5",
-            "placeName": "Vattavada",
-            "date": "10th October 2024",
-            "imageUrl": "images/IMG20240908183833.jpg",
-            "description": "Ventured into the hidden gem of Vattavada, known for its vegetable cultivation and pristine beauty.",
-            "detailedContent": "Vattavada, a lesser-known destination near Munnar, was a delightful surprise. This small village is famous for its vegetable cultivation and cool climate. The ride to Vattavada through winding roads and mist-covered hills was an adventure in itself. The vast stretches of farmlands growing carrots, cabbage, and potatoes created a patchwork of colors. The simple lifestyle of the locals and their warm hospitality made this stop truly memorable."
+            "placeName": "Mysore",
+            "date": "08 September 2024",
+            "imageUrl": "images/Mysore/IMG20240908183833.jpg",
+            "description": "Mysore is a city in the Indian state of Karnataka. It is famous for its scenic beauty, and the Mysore Palace, which is a popula r destination for tourists. The city is also known for its pleasant climate and is a popular destination for tourists.",
+            "detailedContent": "Mysore is a city in the Indian state of Karnataka. It is famous for its scenic beauty, and the Mysore Palace, which is a popular destination for tourists. The city is also known for its pleasant climate and is a popular destination for tourists.",
+            "galleryImages": [
+                {
+                    "url": "images/Mysore/IMG20240908183849.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908104803.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908104818.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908104833.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908104919.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908104955.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908105000.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908105009.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908105110.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908105123.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908175744.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908175804.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908183748.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908183805.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908183811.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908183823.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908183826.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908183833.jpg",
+                    "caption": "Mysore"
+                },
+                {
+                    "url": "images/Mysore/IMG20240908183847.jpg",
+                    "caption": "Mysore"
+                }
+            ]
         },
         {
             "id": "6",
-            "placeName": "Varkala",
-            "date": "15th October 2024",
-            "imageUrl": "images/IMG20240908183833.jpg",
-            "description": "Relaxed at the scenic cliff-side beach town of Varkala. The contrast of beaches and cliffs was stunning.",
-            "detailedContent": "Varkala offered a perfect coastal break in my hill station tour. The ride from the hills to the coast was a study in changing landscapes. Varkala's unique setting, with a long stretch of cliff overlooking the Arabian Sea, was captivating. I spent time relaxing on the beach, watching the sunset from the cliff-top restaurants, and exploring the 2000-year-old Janardana Swami Temple. The fresh seafood and Ayurvedic massages were perfect ways to rejuvenate."
+            "placeName": "Yercaud",
+            "date": "28 October 2023",
+            "imageUrl": "images/Yercaud/IMG20231028170101.jpg",
+            "description": "Yercaud is a town in the Indian state of Tamil Nadu. It is famous for its scenic beauty, and the Yercaud Lake, which is  a popular destination for tourists. The town is also known for its pleasant climate and is a popular destination for tourists.",
+            "detailedContent": "Yercaud is a town in the Indian state of Tamil Nadu. It is famous for its scenic beauty, and the Yercaud Lake, which is a popular destination for tourists. The town is also known for its pleasant climate and is a popular destination for tourists.",
+            "galleryImages": [
+                {
+                    "url": "images/Yercaud/IMG20231028170101.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028170108.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028170718.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028170748.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG_20231029_101229.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028135026.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028135102.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028135158.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028135206.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028135246.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028135409.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028135529.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028135601.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028135615.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028135731.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028135807.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028150435.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028150517.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028150527_01.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028150610.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028150650.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028151052.jpg",
+                    "caption": "Yercaud"
+                },
+                {
+                    "url": "images/Yercaud/IMG20231028151103.jpg",
+                    "caption": "Yercaud"
+                }
+            ]
         },
         {
             "id": "7",
-            "placeName": "Yercaud",
-            "date": "20th October 2024",
-            "imageUrl": "images/IMG20240908183833.jpg",
-            "description": "Discovered the serene beauty of Yercaud, often called the 'Jewel of the South'. The coffee plantations were a treat to ride through.",
-            "detailedContent": "Yercaud, a quaint hill station in the Shevaroy Hills, was a peaceful retreat. The ride up the 20 hairpin bends to reach Yercaud was thrilling. The town's centerpiece, the beautiful Yercaud Lake, offered boating and peaceful walks. I explored the vast coffee plantations and spice farms that dot the landscape. The Killiyur Falls and the Pagoda Point provided spectacular views of the Eastern Ghats. The local silk and coffee made for great souvenirs."
+            "placeName": "Kodaikanal",
+            "date": "20 April 2024",
+            "imageUrl": "images/Kodaikanal/IMG20240420162817.jpg",
+            "description": "Kodaikanal is a town in the Indian state of Tamil Nadu. It is famous for its scenic beauty, and the Kodaikanal Lake, which is a popular destinati   on for tourists. The town is also known for its pleasant climate and is a popular destination for tourists.",
+            "detailedContent": "Kodaikanal is a town in the Indian state of Tamil Nadu. It is famous for its scenic beauty, and the Kodaikanal Lake, which is a popular destination for tourists. The town is also known for its pleasant climate and is a popular destination for tourists.",
+            "galleryImages": [
+                {
+                    "url": "images/Kodaikanal/IMG20240420063959.jpg",
+                    "caption": "Kodaikanal"
+                },
+                {
+                    "url": "images/Kodaikanal/IMG20240420064028.jpg",
+                    "caption": "Kodaikanal"
+                },
+                {
+                    "url": "images/Kodaikanal/IMG20240420064109.jpg",
+                    "caption": "Kodaikanal"
+                },
+                {
+                    "url": "images/Kodaikanal/IMG20240420101120.jpg",
+                    "caption": "Kodaikanal"
+                },
+                {
+                    "url": "images/Kodaikanal/IMG20240420101456.jpg",
+                    "caption": "Kodaikanal"
+                },
+                {
+                    "url": "images/Kodaikanal/IMG20240420101535.jpg",
+                    "caption": "Kodaikanal"
+                },
+                {
+                    "url": "images/Kodaikanal/IMG20240420125745.jpg",
+                    "caption": "Kodaikanal"
+                },
+                {
+                    "url": "images/Kodaikanal/IMG20240420162317.jpg",
+                    "caption": "Kodaikanal"
+                },
+                {
+                    "url": "images/Kodaikanal/IMG20240420162407.jpg",
+                    "caption": "Kodaikanal"
+                },
+                {
+                    "url": "images/Kodaikanal/IMG20240420162447.jpg",
+                    "caption": "Kodaikanal"
+                },
+                {
+                    "url": "images/Kodaikanal/IMG20240420162817.jpg",
+                    "caption": "Kodaikanal"
+                },
+                {
+                    "url": "images/Kodaikanal/IMG20240420163819.jpg",
+                    "caption": "Kodaikanal"
+                },
+                {
+                    "url": "images/Kodaikanal/IMG20240420164001.jpg",
+                    "caption": "Kodaikanal"
+                },
+                {
+                    "url": "images/Kodaikanal/Screenshot_2024-04-20-16-45-18-88_92460851df6f172a4592fca41cc2d2e6.jpg",
+                    "caption": "Kodaikanal"
+                }
+            ]
         },
         {
             "id": "8",
-            "placeName": "Mysore",
-            "date": "25th October 2024",
-            "imageUrl": "images/IMG20240908183833.jpg",
-            "description": "Concluded the trip in the royal city of Mysore. The grand Mysore Palace and the city's rich history were fascinating.",
-            "detailedContent": "Mysore, the city of palaces, was a grand finale to my South Indian bike tour. The ride from Yercaud to Mysore took me through changing landscapes and cultures. The magnificent Mysore Palace, illuminated at night, was a sight to behold. I explored the bustling Devaraja Market, climbed Chamundi Hills for a panoramic view of the city, and visited the historic Jaganmohan Palace Art Gallery. The famous Mysore Pak sweet and the city's rich silk sarees were irresistible purchases to mark the end of this memorable journey."
+            "placeName": "Navagraha",
+            "date": "24 October 2023",
+            "imageUrl": "images/Navagraha/IMG20231024085136.jpg",
+            "description": "Navagraha temples are a group of temples located in the village of Navagraha, in the Indian state of Tamil Nadu. These temples are dedicated to the nine planets in the Hindu astrological system, known as Navagraha. The temples are believed to have been built in the 12th century CE and are known for their unique architecture and intricate sculptures.",
+            "detailedContent": "Navagraha temples are a group of temples located in the village of Navagraha, in the Indian state of Tamil Nadu. These temples are dedicated to the nine planets in the Hindu astrological system, known as Navagraha. The temples are believed to have been built in the 12th century CE and are known for their unique architecture and intricate sculptures.",
+            "galleryImages": [
+                {
+                    "url": "images/Navagraha/IMG20231024085507.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231024085623.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231024090352_01.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231023070028.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231023093958.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231023172826.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231024085342.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231023204606.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231024081128.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231024082416.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231024082642.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231024082953.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231024084058.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231024084157.jpg",
+                    "caption": "Navagraha"
+                },
+                {
+                    "url": "images/Navagraha/IMG20231024085136.jpg",
+                    "caption": "Navagraha"
+                }
+            ]
+        },
+        {
+            "id": "9",
+            "placeName": "Ooty",
+            "date": "26 February 2024",
+            "imageUrl": "images/Ooty/IMG20240226174727.jpg",
+            "description": "Ooty is a town in the Nilgiris district of the Indian state of Tamil Nadu. It is famous for its scenic beauty, tea plantations, and the Ooty Lake. The town is also known for its pleasant climate and is a popular destination for tourists.",
+            "detailedContent": "Ooty is a town in the Nilgiris district of the Indian state of Tamil Nadu. It is famous for its scenic beauty, tea plantations, and the Ooty Lake. The town is also known for its pleasant climate and is a popular destination for tourists.",
+            "galleryImages": [
+                {
+                    "url": "images/Ooty/IMG20240226174727.jpg",
+                    "caption": "Ooty"
+                },
+                {
+                    "url": "images/Ooty/IMG20240226174754.jpg",
+                    "caption": "Ooty"
+                },
+                {
+                    "url": "images/Ooty/IMG20240226174815.jpg",
+                    "caption": "Ooty"
+                },
+                {
+                    "url": "images/Ooty/IMG20240226180136.jpg",
+                    "caption": "Ooty"
+                },
+                {
+                    "url": "images/Ooty/IMG20240226180144.jpg",
+                    "caption": "Ooty"
+                },
+                {
+                    "url": "images/Ooty/IMG20240226180211.jpg",
+                    "caption": "Ooty"
+                },
+                {
+                    "url": "images/Ooty/IMG20240226180220.jpg",
+                    "caption": "Ooty"
+                },
+                {
+                    "url": "images/Ooty/IMG20240226180235.jpg",
+                    "caption": "Ooty"
+                },
+                {
+                    "url": "images/Ooty/IMG20240226180243.jpg",
+                    "caption": "Ooty"
+                }
+            ]
+        },
+        {
+            "id": "10",
+            "placeName": "Bannari",
+            "date": "20 October 2023",
+            "imageUrl": "images/Bannari/IMG20231020093641.jpg",
+            "description": "Bannari Amman Temple is a Hindu temple located in the town of Bannari, in the Indian state of Tamil Nadu. It is dedicated to the goddess Annamalai Amman, who is worshipped as the preserver of the universe. The temple is known for its unique architecture and intricate sculptures.",
+            "detailedContent": "Bannari Amman Temple is a Hindu temple located in the town of Bannari, in the Indian state of Tamil Nadu. It is dedicated to the goddess Annamalai Amman, who is worshipped as the preserver of the universe. The temple is known for its unique architecture and intricate sculptures.",
+            "galleryImages": [
+                {
+                    "url": "images/Bannari/IMG20231020093641.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231020100444.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231004153546.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231004153552.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231005100353.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231005100359.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231007085354.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231007085426.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231007085433.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231007085455.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231007090041.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231007090047.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231008184544.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231008184552.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231009085843.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231018195002.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231018195014.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231018195042.jpg",
+                    "caption": "Bannari"
+                },
+                {
+                    "url": "images/Bannari/IMG20231020093619.jpg",
+                    "caption": "Bannari"
+                }
+            ]
         }
     ]
 }

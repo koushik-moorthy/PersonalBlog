@@ -7,7 +7,7 @@
     <!-- Update this line for the online motorbike favicon -->
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3721/3721619.png" type="image/png">
     <!-- Update this line for the new motorbike favicon -->
-    <link rel="icon" type="image/png" href="images/motorbike_icon.png">
+    <!-- <link rel="icon" type="image/png" href="images/motorbike_icon.png"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&family=Quicksand:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
     <!-- Add Font Awesome CSS -->
@@ -318,13 +318,76 @@
             color: #f0f0f0;
         }
         
+        /* Replace the fadeOut animation with these styles */
+        .timeline-container {
+            transition: opacity 0.3s ease-out;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .dark-mode .overlay {
+            background-color: #1a1a1a;
+        }
+
+        /* Add these new styles for the image loader */
+        .image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #f0f0f0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .dark-mode .image-container {
+            background-color: #2c2c2c;
+        }
+
+        .image-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: #3498db;
+        }
+
+        .timeline-content img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .timeline-content img.loaded {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <div class="navbar-brand-container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.html">
                     <img src="images/black_leopard.png" alt="Travel Blog Logo" class="logo light-mode-logo">
                     <img src="images/white_leopard.png" alt="Travel Blog Logo" class="logo dark-mode-logo" style="display: none;">
                 </a>
@@ -357,6 +420,9 @@
         </div>
     </div>
 
+    <!-- Add this div for the overlay -->
+    <div id="overlay" class="overlay"></div>
+
     <script>
         let timelineData = { timelineItems: [] };
 
@@ -365,12 +431,16 @@
         let currentPage = 1;
 
         async function fetchTimelineData() {
-            try {
-                const response = await fetch('timeline-data.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                timelineData = await response.json();
+        try {
+            const response = await fetch('timeline-data.json?_=' + new Date().getTime());
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            
+            // Check if the data has actually changed
+            if (JSON.stringify(data) !== JSON.stringify(timelineData)) {
+                timelineData = data;
                 
                 // Sort the timeline items
                 timelineData.timelineItems.sort((a, b) => {
@@ -381,12 +451,16 @@
 
                 // Display the first page of items
                 displayTimelineItems(currentPage);
-            } catch (error) {
-                console.error("Could not fetch timeline data:", error);
-                console.log("Current path:", window.location.href);
-                console.log("Attempted to fetch:", new URL('timeline-data.json', window.location.href).href);
+                restoreScrollPosition();
+            } else {
+                console.log("Data hasn't changed since last fetch");
             }
+        } catch (error) {
+            console.error("Could not fetch timeline data:", error);
+            console.log("Current path:", window.location.href);
+            console.log("Attempted to fetch:", new URL('updated_timeline-data.json', window.location.href).href);
         }
+    }
 
         // Add this function to parse the custom date format
         function parseCustomDate(dateString) {
@@ -412,12 +486,18 @@
                     <div class="timeline-content">
                         <span class="timeline-date">${item.date}</span>
                         <h3>${item.placeName}</h3>
-                        <img src="${item.imageUrl}" alt="Bike at ${item.placeName}">
-                        <p>${item.description}</p>
-                        <a href="timeline-detail.html?id=${item.id}" class="btn btn-sm btn-primary">Read More</a>
+                        <div class="image-container">
+                            <div class="image-loader">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                            <img src="${getGoogleDriveImageUrl(item.imageUrl)}" alt="Bike at ${item.placeName}" onload="this.classList.add('loaded'); this.previousElementSibling.style.display='none';">
+                        </div>
+                        <p>${truncateDescription(item.description, 150)}</p>
+                        <a href="javascript:void(0);" class="btn btn-sm btn-primary" onclick="navigateToDetail('${item.id}')">Read More</a>
                     </div>
                 `;
                 timelineContainer.appendChild(timelineItem);
+
 
                 // Trigger reflow to ensure the animation works
                 timelineItem.offsetHeight;
@@ -431,6 +511,87 @@
             updatePaginationControls();
         }
 
+        function getGoogleDriveImageUrl(url) {
+            return url;
+        }
+
+        function truncateDescription(description, maxLength) {
+            if (description.length <= maxLength) {
+                return description;
+            }
+            return description.substr(0, maxLength) + '...';
+        }
+
+        function handlePageLoad() {
+            fetchTimelineData().then(() => {
+                if (performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD) {
+                    restoreScrollPosition();
+                } else {
+                    displayTimelineItems(currentPage);
+                }
+            });
+        }
+
+        // Modify the DOMContentLoaded event listener
+        document.addEventListener('DOMContentLoaded', () => {
+            const overlay = document.getElementById('overlay');
+            
+            // Hide the overlay when the page loads
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+            }, 100);
+
+            // Rest of your initialization code...
+        });
+
+        function navigateToDetail(itemId) {
+            saveScrollPosition();
+            const content = document.querySelector('.timeline-container');
+            const overlay = document.getElementById('overlay');
+
+            // Start fade-out transition
+            content.classList.add('fade-out');
+            overlay.style.opacity = '1';
+
+            // Use setTimeout to allow the fade-out animation to complete
+            setTimeout(() => {
+                // Navigate to the detail page
+                window.location.href = `timeline-detail.html?id=${itemId}`;
+            }, 300); // Adjust this delay to match your fade-out animation duration
+        }
+
+        function loadDetailPage(itemId) {
+            // Fetch the detail page content and update the DOM
+            fetch(`timeline-detail.html?id=${itemId}`)
+                .then(response => response.text())
+                .then(html => {
+                    document.body.innerHTML = html;
+                    // Re-attach event listeners and initialize the detail page
+                    initializeDetailPage();
+                });
+        }
+
+        // Add this function to handle popstate events
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.itemId) {
+                loadDetailPage(event.state.itemId);
+            } else {
+                location.reload();
+            }
+        });
+
+        function saveScrollPosition() {
+            const scrollPosition = window.pageYOffset;
+            sessionStorage.setItem('scrollPosition', scrollPosition.toString());
+            sessionStorage.setItem('currentPage', currentPage.toString());
+        }
+
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                handlePageLoad();
+            }
+        });
+
         function updatePaginationControls() {
             const totalPages = Math.ceil(timelineData.timelineItems.length / itemsPerPage);
             
@@ -443,7 +604,7 @@
                     if (currentPage > 1) {
                         currentPage--;
                         displayTimelineItems(currentPage);
-                        scrollToTop();
+                        scrollToTimeline();
                     }
                 });
                 paginationContainer.appendChild(prevButton);
@@ -453,7 +614,7 @@
                     const pageButton = createPageButton(i, () => {
                         currentPage = i;
                         displayTimelineItems(currentPage);
-                        scrollToTop();
+                        scrollToTimeline();
                     });
                     if (i === currentPage) {
                         pageButton.classList.add('active');
@@ -466,7 +627,7 @@
                     if (currentPage < totalPages) {
                         currentPage++;
                         displayTimelineItems(currentPage);
-                        scrollToTop();
+                        scrollToTimeline();
                     }
                 });
                 paginationContainer.appendChild(nextButton);
@@ -481,9 +642,12 @@
             return button;
         }
 
-        function scrollToTop() {
+        function scrollToTimeline() {
+            const timelineSection = document.getElementById('timelineSection');
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+            const scrollPosition = timelineSection.offsetTop - navbarHeight - 20; // Added extra 20px for spacing
             window.scrollTo({
-                top: 0,
+                top: scrollPosition,
                 behavior: 'smooth'
             });
         }
@@ -548,6 +712,23 @@
 
         // Call the function when the page loads
         window.addEventListener('load', animateIntroSection);
+
+        function restoreScrollPosition() {
+            const savedPosition = sessionStorage.getItem('scrollPosition');
+            const savedPage = sessionStorage.getItem('currentPage');
+            if (savedPosition !== null && savedPage !== null) {
+                currentPage = parseInt(savedPage);
+                displayTimelineItems(currentPage);
+                setTimeout(() => {
+                    window.scrollTo(0, parseInt(savedPosition));
+                }, 100);
+            } else {
+                displayTimelineItems(currentPage);
+            }
+        }
+
+        // Add this event listener to save scroll position when scrolling
+        window.addEventListener('scroll', saveScrollPosition);
 
     </script>
 </body>
